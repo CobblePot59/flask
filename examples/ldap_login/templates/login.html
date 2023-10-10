@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block headers %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+  <div class="container">
+    <label for="login"><b>Login</b></label>
+    <input type="text" placeholder="Enter Login" name="login" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+    <button type="submit">Login</button>
+  </div>
+</form>
+{% endblock %}

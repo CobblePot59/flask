@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr-FR">
+  <head>
+    <meta charset="utf-8">
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=,shrink-to-fit=no">
+    <link rel="icon" href="static/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="static/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="static/plugins/bootstrap/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="static/plugins/toastr/toastr.min.css">
+    {% block headers %}{% endblock %}
+
+    <script src="static/plugins/jquery/jquery.min.js"></script>
+    <script src="static/plugins/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="static/plugins/socket.io/socket.io.min.js"></script>
+    <script src="static/plugins/toastr/toastr.min.js"></script>
+    {% block scripts %}{% endblock %}
+  </head>
+  <body>
+    <script>
+        const socket = io.connect(`http://${document.domain}:${location.port}`);
+        socket.on('toast', ({ message, type }) => toastr[type](message));
+    </script>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
