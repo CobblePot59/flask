@@ -2,9 +2,6 @@ from flask import render_template, request, redirect, url_for, session, flash
 from app import app, ldap
 from decor import login_required
 
-def notify(message, toast_type):
-    socketio.emit('toast', {'message': message, 'type': toast_type})
-
 @app.route('/', methods=['GET'])
 @login_required
 def index():
