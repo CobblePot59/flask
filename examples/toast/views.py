@@ -27,6 +27,3 @@ def warning():
 def error():
     notify('This is an example of error toast', 'error')
     return '', 204
-
-if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=80)
