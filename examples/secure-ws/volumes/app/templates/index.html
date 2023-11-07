@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block headers %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<h1>Secure Websockets</h1>
+<div id="data-container"></div>
+
+<script>
+  // Connect to the Socket.IO server
+  const socket = io.connect(`https://${document.domain}:${location.port}`);
+
+  // Send an event to the server
+  socket.emit('server_event', 'Hello, server');
+
+  // Reveive an event from the server
+  socket.on('client_event', (data) => {
+    $('#data-container').append('<p>' + data + '</p>');
+  });
+
+</script>
+{% endblock %}
