@@ -10,6 +10,8 @@ services:
       - ./volumes/app:/opt/secure-ws
       - ./volumes/ssl/secure-ws.cobblepot59.int.crt:/etc/ssl/certs/secure-ws.cobblepot59.int.crt:ro
       - ./volumes/ssl/secure-ws.cobblepot59.int.key:/etc/ssl/private/secure-ws.cobblepot59.int.key:ro
+    environment:
+      - PYTHONUNBUFFERED=1
 
   rp:
     image: nginx:alpine
