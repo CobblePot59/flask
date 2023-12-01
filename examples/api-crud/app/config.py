@@ -1,4 +1,4 @@
 JWT_SECRET_KEY = '7X1pNNqBgaeJS6e9iGvEq8m9nDemK4R7'
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI = "sqlite:///<absolute path to>/db/Users.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:///Users.db"
