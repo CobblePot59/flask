@@ -1,0 +1,31 @@
+services:
+  app1:
+    build: BUILD/app/
+    image: toastr
+    container_name: toastr1
+    restart: always
+    volumes:
+      - ./volumes/app/:/opt/toastr
+      - ./volumes/rp/ssl/www.toastr.int.crt:/etc/ssl/certs/www.toastr.int.crt:ro
+      - ./volumes/rp/ssl/www.toastr.int.key:/etc/ssl/private/www.toastr.int.key:ro
+  app2:
+    build: BUILD/app/
+    image: toastr
+    container_name: toastr2
+    restart: always
+    volumes:
+      - ./volumes/app/:/opt/toastr
+      - ./volumes/rp/ssl/www.toastr.int.crt:/etc/ssl/certs/www.toastr.int.crt:ro
+      - ./volumes/rp/ssl/www.toastr.int.key:/etc/ssl/private/www.toastr.int.key:ro
+  rp:
+    image: nginx:alpine
+    container_name: toastr-rp
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - ./volumes/rp/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./volumes/rp/ssl/www.toastr.int.crt:/etc/ssl/certs/www.toastr.int.crt:ro
+      - ./volumes/rp/ssl/www.toastr.int.key:/etc/ssl/private/www.toastr.int.key:ro
+    environment:
+      - NGINX_HOST=www.toastr.int
