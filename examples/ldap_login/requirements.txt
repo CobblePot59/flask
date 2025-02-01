@@ -1,3 +1,0 @@
-flask
-flask-ldap3-simple-auth
-flask-toastr
